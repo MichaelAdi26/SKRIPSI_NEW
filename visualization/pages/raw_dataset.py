@@ -173,14 +173,14 @@ layout = html.Div([
 def update_graph(n_clicks, selected_province, selected_year, selected_param):
 
     dataset_paths = {
-                        2021: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI/dataset_mentah/2021_merged_before_geo_matching.parquet",
-                        2022: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI/dataset_mentah/2022_merged_before_geo_matching.parquet",
-                        2023: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI/dataset_mentah/2023_merged_before_geo_matching.parquet"
+                        2021: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2021_merged_before_geo_matching.parquet",
+                        2022: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2022_merged_before_geo_matching.parquet",
+                        2023: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2023_merged_before_geo_matching.parquet"
                     }
     dataset_after_paths = {
-                        2021: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI/dataset_mentah/2021_merged_after_geo_matching.parquet",
-                        2022: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI/dataset_mentah/2022_merged_after_geo_matching.parquet",
-                        2023: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI/dataset_mentah/2023_merged_after_geo_matching.parquet"
+                        2021: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2021_merged_after_geo_matching.parquet",
+                        2022: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2022_merged_after_geo_matching.parquet",
+                        2023: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2023_merged_after_geo_matching.parquet"
                           }
     
     # Jika tombol belum ditekan, sembunyikan tabel dan grafik
@@ -252,7 +252,7 @@ def update_graph(n_clicks, selected_province, selected_year, selected_param):
 
     # Dataset by selected parameter before interpolasi dan after interpolasi:
     # File path & sheet mapping
-    selected_param_path = "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI/dataset_mentah/Dataset Jumlah Penduduk & PDRB Provinsi (2018 - 2023).xlsx"
+    selected_param_path = "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/Dataset Jumlah Penduduk & PDRB Provinsi (2018 - 2023).xlsx"
     sheet_mapping = {
         "Jumlah_Penduduk": "Data Jumlah Penduduk",
         "Jumlah_Penduduk_Miskin": "Data Jumlah Penduduk Miskin",
@@ -274,7 +274,7 @@ def update_graph(n_clicks, selected_province, selected_year, selected_param):
         "Produksi_Listrik": "Data Pelanggan Listrik, Daya Terpasang, Listrik Terjual, dan Produksi Listrik",
         "Listrik_Terjual": "Data Pelanggan Listrik, Daya Terpasang, Listrik Terjual, dan Produksi Listrik"
     }
-    base_path = r"C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI"
+    base_path = r"C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW"
 
     if os.path.exists(selected_param_path) and selected_param:
         try:

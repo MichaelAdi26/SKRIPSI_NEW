@@ -26,9 +26,9 @@ import joblib, os
 from tensorflow.keras.utils import register_keras_serializable
 
 # dataset all:
-data_all = pd.read_parquet("C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI/dataset_after_merge/Final_Data_2021_2023.parquet")
+data_all = pd.read_parquet("C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_after_merge/Final_Data_2021_2023.parquet")
 # dataset latitude dan longitude:
-data_top1 = pd.read_parquet("C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI/dataset_after_merge/Latitude_Longitude_All.parquet")
+data_top1 = pd.read_parquet("C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_after_merge/Latitude_Longitude_All.parquet")
 
 # Mengubah tampilan Data Numerikal dengan Koma, tanpa mengubah tipe data dari tiap Kolom:
 # Daftar kolom yang ingin diformat
@@ -906,7 +906,7 @@ models_top5 = {
 
 # Function load model pada Prediction Pages untuk ALL Parameter:
 def load_model_dynamic(province, model_name):
-    base_path = "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI/model/models"
+    base_path = "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/model/models"
     # Define the model types with correct naming
     model_types = {
         "Linear Regression": ".pkl", #1
@@ -955,7 +955,7 @@ def load_model_dynamic(province, model_name):
     
 # Function load model pada Prediction Pages
 def load_model_dynamic_top5(province, model_name):
-    base_path = "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI/model/models"
+    base_path = "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/model/models"
     # Define the model types with correct naming
     model_types = {
         "Linear Regression": ".pkl", #1
