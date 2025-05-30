@@ -52,37 +52,18 @@ layout = dbc.Container([
         ), width=3)
     ],justify="center"),
     html.Br(),
-    dbc.Row([dbc.Col(dbc.Card(dcc.Graph(id="map-graph", figure=att.get_indonesia_map(), style={"width": "100%", "height": "400px"}), body=True, style={"opacity": "0.5"}))]),
-    html.Br(),
-    # Tabel Dataset
-    dbc.Row([
-    dbc.Col(
-        dbc.Card([
-            dbc.CardHeader(html.H5("Table Dataset of Electricity Demand", className="text-center fw-bold")),
-            dbc.CardBody([
-                dag.AgGrid(
-                    id="table-dataset",
-                    rowData=[],  # Data diisi dari callback
-                    columnDefs=[],  # Kolom diisi dari callback
-                    defaultColDef={"resizable": True, "sortable": True},  
-                    style={"height": "350px", "width": "100%"},
-                    # **Gunakan Tema Dark**
-                    className="ag-theme-alpine",              
-                )], style={"backgroundColor": "#fff", "padding": "2px"})
-                    ]), width=20
-                )
-            ]),
+    dbc.Row([dbc.Col(dbc.Card(dcc.Graph(id="map-graph", figure=att.get_indonesia_map(), style={"width": "100%", "height": "350px"}), body=True, style={"opacity": "0.5"}))]),
     html.Br(),
     dbc.Row([
         dbc.Col([
             html.H5("Average Daily Electricity Demand Line Chart in Selected Province in Selected Year", className="text-center fw-bold"),
-            dcc.Graph(id="linechart-avg-demand-energy", style={"width": "100%", "height": "450px"})  
+            dcc.Graph(id="linechart-avg-demand-energy", style={"width": "100%", "height": "300px"})  
         ])
     ]),
     dbc.Row([
         dbc.Col([
             html.H5("Tree Map Chart of the Top 5 Regencies Based on Total Electricity Demand", className="text-center fw-bold"),
-            dcc.Graph(id="heatmap-top-5-regency", style={"width": "100%", "height": "500px"})  
+            dcc.Graph(id="heatmap-top-5-regency", style={"width": "100%", "height": "300px"})  
         ])
     ]),
     html.Br(),
@@ -98,22 +79,41 @@ layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             html.H5("Tree Map Chart of List of Regencies in Selected Province in Selected Year", className="text-center fw-bold"),
-            dcc.Graph(id="heatmap-list-regency", style={"width": "100%", "height": "500px"})
+            dcc.Graph(id="heatmap-list-regency", style={"width": "100%", "height": "400px"})
         ])
     ]),
+    html.Br(),
+    # Tabel Dataset
+    dbc.Row([
+    dbc.Col(
+        dbc.Card([
+            dbc.CardHeader(html.H5("Table Dataset of Electricity Demand", className="text-center fw-bold")),
+            dbc.CardBody([
+                dag.AgGrid(
+                    id="table-dataset",
+                    rowData=[],  # Data diisi dari callback
+                    columnDefs=[],  # Kolom diisi dari callback
+                    defaultColDef={"resizable": True, "sortable": True},  
+                    style={"height": "250px", "width": "100%"},
+                    # **Gunakan Tema Dark**
+                    className="ag-theme-alpine",              
+                )], style={"backgroundColor": "#fff", "padding": "2px"})
+                    ]), width=20
+                )
+            ]),
     html.Br(),
 ])
 
 @callback(
     [
         Output("map-graph", "figure"),
-        Output("table-dataset", "columnDefs"),
-        Output("table-dataset", "rowData"),
         Output("heatmap-top-5-regency", "figure"),
         Output("bar-top-3-regency", "figure"),
         Output("bar-bottom-3-regency", "figure"),
         Output("linechart-avg-demand-energy", "figure"),
         Output("heatmap-list-regency", "figure"),
+        Output("table-dataset", "columnDefs"),
+        Output("table-dataset", "rowData"),
     ],
     [
         Input("param-dropdown", "value"),
@@ -195,7 +195,7 @@ def update_graph(selected_params, selected_province, selected_year):
         )
         top5_heatmap_fig.update_layout(
             margin=dict(l=0, r=0, t=20, b=20),  
-            coloraxis_colorbar=dict(title="Electricity Demand (KWh)", orientation='h',  x=0.5, xanchor="center", y=-0.2, yanchor="bottom", len=0.7, 
+            coloraxis_colorbar=dict(title="Electricity Demand (in Million KWh)", orientation='h',  x=0.5, xanchor="center", y=-0.4, yanchor="bottom", len=0.7, 
                                     thickness=20, tickfont=dict(size=12), titlefont=dict(size=14), title_side="top"), 
             title_x=0.5)
     else:
@@ -296,12 +296,6 @@ def update_graph(selected_params, selected_province, selected_year):
                         "active": 0, "x": 1.15, "xanchor": "right", "y": 1.2, "yanchor": "top"
                     }
                 ],
-                # title={
-                #     # "text": f"Average Daily Electricity Demand in {selected_province} ({selected_year})",
-                #     "x": 0.5, 
-                #     "xanchor": "center",
-                #     "yanchor": "top"
-                # },
                 xaxis=dict(
                     title="Date", tickvals=tickvals,  # Set label hanya di awal bulan
                     ticktext=ticktext, tickangle=-45  # Supaya tidak bertabrakan
@@ -343,6 +337,8 @@ def update_graph(selected_params, selected_province, selected_year):
             )
             list_regency_treemap_fig.update_layout(
                 margin=dict(l=20, r=20, t=40, b=20),
+                coloraxis_colorbar=dict(title="Electricity Demand (in Million KWh)", orientation='h',  x=0.5, xanchor="center", y=-0.4, yanchor="bottom", len=0.7, 
+                                    thickness=20, tickfont=dict(size=12), titlefont=dict(size=14), title_side="top"), 
                 template="plotly_dark", title_x=0.5  
             )
         else:
@@ -352,7 +348,7 @@ def update_graph(selected_params, selected_province, selected_year):
         list_regency_treemap_fig = go.Figure()
         print("⛔ Treemap is not displayed because the parameters are not selected correctly")
 
-    return map_fig, columnDefs, rowData, top5_heatmap_fig, top3_barchart_fig, bottom3_barchart_fig, avg_demand_fig, list_regency_treemap_fig
+    return map_fig, top5_heatmap_fig, top3_barchart_fig, bottom3_barchart_fig, avg_demand_fig, list_regency_treemap_fig, columnDefs, rowData
 
 # Warning untuk Fill in Dropdown:
 @callback(
