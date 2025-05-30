@@ -20,7 +20,7 @@ register_page(__name__, path='/raw_dataset')
 
 # Layout Dashboard
 layout = html.Div([
-    html.Br(),
+    # html.Br(),
     dbc.Row([dbc.Col(html.H4("Raw Dataset of Electricity Demand", className="text-center border border-dark p-2 fw-bold"))]),
     html.Br(),
     html.Div([
@@ -52,7 +52,7 @@ layout = html.Div([
         dbc.Col(dash_table.DataTable(
             id="data-raw",
             columns=[{"name": col, "id": col} for col in df.columns],
-            page_size=11,
+            page_size=6,
             style_table={'overflowX': 'auto'},
             style_cell={  
                 'textAlign': 'center',  # Memusatkan isi sel
@@ -65,7 +65,7 @@ layout = html.Div([
             },
                 ), width=12)
         ], style={"textAlign": "center"}),
-    html.Br(),
+    # html.Br(),
 
     # Tabel Dataset after preprocessing:
     dbc.Row(id="table-preprocess-data", children=[
@@ -73,7 +73,7 @@ layout = html.Div([
         dbc.Col(dash_table.DataTable(
             id="data-preprocess",
             columns=[{"name": col, "id": col} for col in df2.columns],
-            page_size=11,
+            page_size=6,
             style_table={'overflowX': 'auto'},
             style_cell={  
                 'textAlign': 'center',  # Memusatkan isi sel
@@ -121,7 +121,7 @@ layout = html.Div([
             style_table={'overflowX': 'auto'},
             style_cell={  
                 'textAlign': 'center',  # Memusatkan isi sel
-                'padding': '5px',  # Menambahkan padding agar lebih rapi
+                'padding': '2px',  # Menambahkan padding agar lebih rapi
             },
             style_header={
                 'textAlign': 'center',  # Memusatkan header kolom
@@ -171,16 +171,16 @@ layout = html.Div([
      State("param-dropdown", "value")]
 )
 def update_graph(n_clicks, selected_province, selected_year, selected_param):
-
+    # GANTI PATH DATASET untuk load merged parquet file:
     dataset_paths = {
-                        2021: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2021_merged_before_geo_matching.parquet",
-                        2022: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2022_merged_before_geo_matching.parquet",
-                        2023: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2023_merged_before_geo_matching.parquet"
+                        2021: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2021_merged_before_geo_matching_compressed.parquet",
+                        2022: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2022_merged_before_geo_matching_compressed.parquet",
+                        2023: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2023_merged_before_geo_matching_compressed.parquet"
                     }
     dataset_after_paths = {
-                        2021: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2021_merged_after_geo_matching.parquet",
-                        2022: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2022_merged_after_geo_matching.parquet",
-                        2023: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2023_merged_after_geo_matching.parquet"
+                        2021: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2021_merged_after_geo_matching_compressed.parquet",
+                        2022: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2022_merged_after_geo_matching_compressed.parquet",
+                        2023: "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/dataset_mentah/2023_merged_after_geo_matching_compressed.parquet"
                           }
     
     # Jika tombol belum ditekan, sembunyikan tabel dan grafik
