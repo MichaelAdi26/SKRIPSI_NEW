@@ -314,7 +314,6 @@ def predict_map_figure(top_n_df, selected_province, year_range, top_n=20):
     else:
         sizes = ((top_points["Prediction"] - min_demand) / (max_demand - min_demand)) * (max_size - min_size) + min_size
 
-
     hover_texts = [
         f"Province: {selected_province} <br> Regency: {row['Regency']} <br> Latitude: {row['Latitude']} <br> Longitude: {row['Longitude']} <br> Prediction of Electricity Demand: {row['Prediction']:.2f} in KWh"
         for _, row in top_points.iterrows()
@@ -904,6 +903,114 @@ models_top5 = {
     },
 }
 
+models_predict = {
+    "Bali": {
+        "Linear Regression": "model/models/Bali/Bali_Linear_Regression.pkl", #1
+        "Random Forest": "model/models/Bali/Bali_Random_Forest.pkl", #2
+        "XGBoost": "model/models/Bali/Bali_XGBoost.pkl", #3
+        "SVR": "model/models/Bali/Bali_SVR.pkl", #4
+        "KNN": "model/models/Bali/Bali_KNN.pkl", #5
+        "LightGBM": "model/models/Bali/Bali_LightGBM.pkl", #6
+        "CatBoost": "model/models/Bali/Bali_CatBoost.pkl", #7
+        "Extra Trees": "model/models/Bali/Bali_Extra_Trees.pkl", #8
+        "LSTM": "model/models/Bali/Bali_LSTM.keras", #9
+        "Transformer": "model/models/Bali/Bali_Transformer_Predict.keras", #10
+        "GRU": "model/models/Bali/Bali_GRU.keras", #11
+        "CNN-1D": "model/models/Bali/Bali_CNN-1D.keras", #12
+        "MLP": "model/models/Bali/Bali_MLP.keras" #13
+    },
+    "Banten": {
+        "Linear Regression": "model/models/Banten/Banten_Linear Regression.pkl", #1
+        "Random Forest": "model/models/Banten/Banten_Random Forest.pkl", #2
+        "XGBoost": "model/models/Banten/Banten_XGBoost.pkl", #3
+        "SVR": "model/models/Banten/Banten_SVR.pkl", #4
+        "KNN": "model/models/Banten/Banten_KNN.pkl", #5
+        "LightGBM": "model/models/Banten/Banten_LightGBM.pkl", #6
+        "CatBoost": "model/models/Banten/Banten_CatBoost.pkl", #7
+        "Extra Trees": "model/models/Banten/Banten_Extra Trees.pkl", #8
+        "LSTM": "model/models/Banten/Banten_LSTM.keras", #9
+        "Transformer": "model/models/Banten/Banten_Transformer_Predict.keras", #10
+        "GRU": "model/models/Banten/Banten_GRU.keras", #11
+        "CNN-1D": "model/models/Banten/Banten_CNN-1D.keras", #12
+        "MLP": "model/models/Banten/Banten_MLP.keras" #13
+    },
+    "Central Java": {
+        "Linear Regression": "model/models/Central Java/Central Java_Linear Regression.pkl", #1
+        "Random Forest": "model/models/Central Java/Central Java_Random Forest.pkl", #2
+        "XGBoost": "model/models/Central Java/Central Java_XGBoost.pkl", #3
+        "SVR": "model/models/Central Java/Central Java_SVR.pkl", #4
+        "KNN": "model/models/Central Java/Central Java_KNN.pkl", #5
+        "LightGBM": "model/models/Central Java/Central Java_LightGBM.pkl", #6
+        "CatBoost": "model/models/Central Java/Central Java_CatBoost.pkl", #7
+        "Extra Trees": "model/models/Central Java/Central Java_Extra Trees.pkl", #8
+        "LSTM": "model/models/Central Java/Central Java_LSTM.keras", #9
+        "Transformer": "model/models/Central Java/Central Java_Transformer_Predict.keras", #10
+        "GRU": "model/models/Central Java/Central Java_GRU.keras", #11
+        "CNN-1D": "model/models/Central Java/Central Java_CNN-1D.keras", #12
+        "MLP": "model/models/Central Java/Central Java_MLP.keras" #13
+    },
+    "East Java": {
+        "Linear Regression": "model/models/East Java/East Java_Linear Regression.pkl", #1
+        "Random Forest": "model/models/East Java/East Java_Random Forest.pkl", #2
+        "XGBoost": "model/models/East Java/East Java_XGBoost.pkl", #3
+        "SVR": "model/models/East Java/East Java_SVR.pkl", #4
+        "KNN": "model/models/East Java/East Java_KNN.pkl", #5
+        "LightGBM": "model/models/East Java/East Java_LightGBM.pkl", #6
+        "CatBoost": "model/models/East Java/East Java_CatBoost.pkl", #7
+        "Extra Trees": "model/models/East Java/East Java_Extra Trees.pkl", #8
+        "LSTM": "model/models/East Java/East Java_LSTM.keras", #9
+        "Transformer": "model/models/East Java/East Java_Transformer_Predict.keras", #10
+        "GRU": "model/models/East Java/East Java_GRU.keras", #11
+        "CNN-1D": "model/models/East Java/East Java_CNN-1D.keras", #12
+        "MLP": "model/models/East Java/East Java_MLP.keras" #13
+    },
+    "Jakarta": {
+        "Linear Regression": "model/models/Jakarta/Jakarta_Linear_Regression.pkl", #1
+        "Random Forest": "model/models/Jakarta/Jakarta_Random_Forest.pkl", #2
+        "XGBoost": "model/models/Jakarta/Jakarta_XGBoost.pkl", #3
+        "SVR": "model/models/Jakarta/Jakarta_SVR.pkl", #4
+        "KNN": "model/models/Jakarta/Jakarta_KNN.pkl", #5
+        "LightGBM": "model/models/Jakarta/Jakarta_LightGBM.pkl", #6
+        "CatBoost": "model/models/Jakarta/Jakarta_CatBoost.pkl", #7
+        "Extra Trees": "model/models/Jakarta/Jakarta_Extra_Trees.pkl", #8
+        "LSTM": "model/models/Jakarta/Jakarta_LSTM.keras", #9
+        "Transformer": "model/models/Jakarta/Jakarta_Transformer_Predict.keras", #10
+        "GRU": "model/models/Jakarta/Jakarta_GRU.keras", #11
+        "CNN-1D": "model/models/Jakarta/Jakarta_CNN-1D.keras", #12
+        "MLP": "model/models/Jakarta/Jakarta_MLP.keras" #13
+    },
+    "West Java": {
+        "Linear Regression": "model/models/West Java/West Java_Linear_Regression.pkl", #1
+        "Random Forest": "model/models/West Java/West Java_Random_Forest.pkl", #2
+        "XGBoost": "model/models/West Java/West Java_XGBoost.pkl", #3
+        "SVR": "model/models/West Java/West Java_SVR.pkl", #4
+        "KNN": "model/models/West Java/West Java_KNN.pkl", #5
+        "LightGBM": "model/models/West Java/West Java_LightGBM.pkl", #6
+        "CatBoost": "model/models/West Java/West Java_CatBoost.pkl", #7
+        "Extra Trees": "model/models/West Java/West Java_Extra_Trees.pkl", #8
+        "LSTM": "model/models/West Java/West Java_LSTM.keras", #9
+        "Transformer": "model/models/West Java/West Java_Transformer_Predict.keras", #10
+        "GRU": "model/models/West Java/West Java_GRU.keras", #11
+        "CNN-1D": "model/models/West Java/West Java_CNN-1D.keras", #12
+        "MLP": "model/models/West Java/West Java_MLP.keras" #13
+    },
+    "Yogyakarta": {
+        "Linear Regression": "model/models/Yogyakarta/Yogyakarta_Linear_Regression.pkl", #1
+        "Random Forest": "model/models/Yogyakarta/Yogyakarta_Random_Forest.pkl", #2
+        "XGBoost": "model/models/Yogyakarta/Yogyakarta_XGBoost.pkl", #3
+        "SVR": "model/models/Yogyakarta/Yogyakarta_SVR.pkl", #4
+        "KNN": "model/models/Yogyakarta/Yogyakarta_KNN.pkl", #5
+        "LightGBM": "model/models/Yogyakarta/Yogyakarta_LightGBM.pkl", #6
+        "CatBoost": "model/models/Yogyakarta/Yogyakarta_CatBoost.pkl", #7
+        "Extra Trees": "model/models/Yogyakarta/Yogyakarta_Extra_Trees.pkl", #8
+        "LSTM": "model/models/Yogyakarta/Yogyakarta_LSTM.keras", #9
+        "Transformer": "model/models/Yogyakarta/Yogyakarta_Transformer_Predict.keras", #10
+        "GRU": "model/models/Yogyakarta/Yogyakarta_GRU.keras", #11
+        "CNN-1D": "model/models/Yogyakarta/Yogyakarta_CNN-1D.keras", #12
+        "MLP": "model/models/Yogyakarta/Yogyakarta_MLP.keras" #13
+    },
+}
+
 # Function load model pada Prediction Pages untuk ALL Parameter:
 def load_model_dynamic(province, model_name):
     base_path = "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/model/models"
@@ -949,6 +1056,50 @@ def load_model_dynamic(province, model_name):
         custom_objects = {}
         if model_name == "Transformer":
             custom_objects = {"TransformerBlock": TransformerBlock}
+        return tf.keras.models.load_model(model_path, custom_objects=custom_objects)
+    else:
+        raise ValueError(f"Unknown model file type for {model_path}")
+    
+# Function load model pada Prediction Pages untuk ALL Parameter:
+def load_model_dynamic_predict(province, model_name):
+    base_path = "C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/model/models"
+
+    model_types = {
+        "Linear Regression": ".pkl",
+        "Random Forest": ".pkl",
+        "XGBoost": ".pkl",
+        "KNN": ".pkl",
+        "SVR": ".pkl",
+        "LightGBM": ".pkl",
+        "CatBoost": ".pkl",
+        "Extra Trees": ".pkl",
+        "LSTM": ".keras",
+        "CNN-1D": ".keras",
+        "Transformer": ".keras",  # akan di-handle khusus
+        "GRU": ".keras",
+        "MLP": ".keras"
+    }
+
+    model_extension = model_types.get(model_name)
+    if model_extension is None:
+        raise ValueError(f"Unsupported model type: {model_name}")
+    
+    if model_name == "Transformer":
+        model_file_name = f"{province}_{model_name}_Predict{model_extension}"
+    else:
+        model_file_name = f"{province}_{model_name.replace(' ', '_')}{model_extension}"
+
+    model_path = os.path.join(base_path, province, model_file_name)
+
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"Model '{model_name}' untuk provinsi '{province}' tidak ditemukan di {model_path}")
+
+    if model_extension == ".pkl":
+        print(f"Loading model from: {model_path}")
+        return joblib.load(model_path)
+    elif model_extension == ".keras":
+        print(f"Loading model from: {model_path}")
+        custom_objects = {"TransformerBlock": TransformerBlock} if model_name == "Transformer" else {}
         return tf.keras.models.load_model(model_path, custom_objects=custom_objects)
     else:
         raise ValueError(f"Unknown model file type for {model_path}")
