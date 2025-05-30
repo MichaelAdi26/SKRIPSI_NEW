@@ -150,7 +150,7 @@ def update_model_result(n_clicks, provinsi, selected_model, train_size, model_hi
     # Path untuk save model:
     filename_clean = f"{selected_model.replace(' ', '_').replace('(', '').replace(')', '').replace('-', '_')}_{provinsi.replace(' ', '_')}"
     model_ext = ".keras" if "Deep Learning" in selected_model else ".pkl"
-    model_path = f"C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI_NEW/saved_models/{filename_clean}{model_ext}"
+    model_path = f"C:/Users/Michael Adi/Documents/DATA SKRIPSI/SKRIPSI/saved_models/{filename_clean}{model_ext}"
 
     # Cek apakah model adalah fungsi deep learning
     if selected_model in ["LSTM (Deep Learning)", "Transformer (Deep Learning)", "CNN-1D (Deep Learning)", "GRU (Deep Learning)", "MLP (Deep Learning)"]:
@@ -187,7 +187,7 @@ def update_model_result(n_clicks, provinsi, selected_model, train_size, model_hi
         end_time = time.time()
         best_model = grid.best_estimator_
         evaluation = att.evaluate_model(best_model, X_train_scaled, y_train, X_test_scaled, y_test)
-        joblib.dump(best_model, model_path) # save models
+        # joblib.dump(best_model, model_path) # save models
 
     duration = end_time - start_time
     # Pastikan best_params selalu ada
