@@ -26,7 +26,7 @@ def about():
             ),
             html.P([
                     "It is an open-source project, with code",
-                    html.A(" available here", href="https://instagram.com/michaeladi26", target="_blank"),".",
+                    html.A(" available here", href="https://github.com/MichaelAdi26/SKRIPSI_NEW", target="_blank"),".",
                 ]),
         ], lg=6, class_name="text-center"
     )
