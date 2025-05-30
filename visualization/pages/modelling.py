@@ -187,7 +187,7 @@ def update_model_result(n_clicks, provinsi, selected_model, train_size, model_hi
         end_time = time.time()
         best_model = grid.best_estimator_
         evaluation = att.evaluate_model(best_model, X_train_scaled, y_train, X_test_scaled, y_test)
-        # joblib.dump(best_model, model_path) # save models
+        joblib.dump(best_model, model_path) # save models
 
     duration = end_time - start_time
     # Pastikan best_params selalu ada
